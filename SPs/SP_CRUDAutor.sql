@@ -1,16 +1,16 @@
 DELIMITER //
-CREATE PROCEDURE SpIngresarAutor (IN nombre varchar(100), IN apellidos varchar (100))
+CREATE PROCEDURE SpIngresarAutor (IN nom varchar(100), IN ap varchar (100))
 BEGIN
 	INSERT INTO AUTOR (NOMBRE, APELLIDOS, BORRADO)
-	VALUES (nombre, apellidos, false);
+	VALUES (nom, ap, false);
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpActualizarAutor(IN nombre varchar(100), IN apellidos varchar (100), IN idAut INT)
+CREATE PROCEDURE SpActualizarAutor(IN nom varchar(100), IN ap varchar (100), IN idAut INT)
 BEGIN
     UPDATE AUTOR
-    SET NOMBRE = nombre, APELLIDOS = apellidos
+    SET NOMBRE = nom, APELLIDOS = ap
     WHERE ID = idAut;
 END //
 DELIMITER ;
@@ -23,18 +23,18 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBusquedaNombreAutor(IN nombre varchar (100))
+CREATE PROCEDURE SpBusquedaNombreAutor(IN nom varchar (100))
 BEGIN
 	SELECT * FROM AUTOR
-    WHERE NOMBRE = nombre;
+    WHERE NOMBRE = nom;
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBusquedaApellidosAutor(IN apellidos varchar (100))
+CREATE PROCEDURE SpBusquedaApellidosAutor(IN ap varchar (100))
 BEGIN 
     SELECT * FROM AUTOR 
-    WHERE APELLIDOS = apellidos;
+    WHERE APELLIDOS = ap;
 END //
 DELIMITER ;
 
@@ -51,9 +51,14 @@ DELIMITER ;
 	CommandType.StoredProcedure
 	SqlCommand("SpIngresarAutor")
 	SqlCommand("SpActualizarAutor")
-	SqlCommand("SpBusquedaTodo")
+	SqlCommand("SpBusquedaTodoAutor")
     SqlCommand("SpBusquedaNombreAutor")
     SqlCommand("SpBusquedaApellidosAutor")
-	SqlCommand("SpBorrar")
+	SqlCommand("SpBorrarAutor")
 */
 CALL SpIngresarAutor("Gabriel","Martínez");
+CALL SpActualizarAutor("Gabriel de Jesús", "Martinez Camareno", 1);
+CALL SpBusquedaTodoAutor();
+CALL SpBusquedaNombreAutor("Keyla");
+CALL SpBusquedaApellidosAutor("Vega");
+CALL SpBorrarAutor(6);

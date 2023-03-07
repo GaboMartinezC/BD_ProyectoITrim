@@ -16,24 +16,24 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBusquedaTodo()
+CREATE PROCEDURE SpBusquedaTodoCategoria()
 BEGIN
 	SELECT * FROM CATEGORIA;
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBusqueda (IN descripcion varchar(200))
+CREATE PROCEDURE SpBusquedaCategoriaDescripcion (IN descripcion varchar(200))
 BEGIN
 	SELECT * FROM CATEGORIA WHERE DESCRIPCION = descripcion;
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBorrar (IN idCat INT)
+CREATE PROCEDURE SpBorrarCategoria (IN idCat INT)
 BEGIN 
 	UPDATE CATEGORIA
-	SET BORRRADO = TRUE
+	SET BORRADO = TRUE
 	WHERE ID = idCat;
 END //
 DELIMITER ;
@@ -43,13 +43,12 @@ DELIMITER ;
 	CommandType.StoredProcedure
 	SqlCommand("SpIngresarCategoria")
 	SqlCommand("SpActualizarCategoria")
-	SqlCommand("SpBusqueda")
-	SqlCommand("SpBusquedaTodo")
-	SqlCommand("SpBorrar")
-	CORREGIR EL SP NOMBRE
+	SqlCommand("SpBusquedaCategoriaDescripcion")
+	SqlCommand("SpBusquedaTodoCategoria")
+	SqlCommand("SpBorrarCategoria")
 */
 CALL SpIngresarCategoria("Fantasia", true);
 CALL SpActualizarCategoria("Lapiz", false, 1);
 CALL SpBusqueda ("Fantasia");
-CALL SpBusquedaTodo();
-CALL SpBorrar(1);
+CALL SpBusquedaTodoCategoria();
+CALL SpBorrarCategoria(1);
