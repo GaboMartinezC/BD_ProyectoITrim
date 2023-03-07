@@ -94,6 +94,14 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+CREATE PROCEDURE SpBuscarProductoProveedor(IN idProv INT)
+BEGIN 
+    SELECT * FROM PRODUCTO 
+    WHERE ID_PROVEEDOR = idProv;
+END
+DELIMITER ;
+
 CALL SpBuscarTodoProductoGeneral();
 CALL SpBuscarProductoGeneral("Lapiz Grafito");
 CALL SpBorrarProducto(1);
@@ -104,3 +112,65 @@ CALL SpBorrarProducto(1);
     del lenguaje SQL, en los metodos de la sub clase Libro SI
     se deben de consumir los SP a continuación
 */
+DELIMITER //
+CREATE PROCEDURE SpIngresarLibro (
+    IN descrip varchar(100), 
+    IN stMinimo INT, 
+    IN stMaximo INT,
+    IN idProv INT,
+    IN precioProd FLOAT, 
+    IN prodEstudiantil BOOLEAN,
+    IN cantPag INT, 
+    IN idAut INT, 
+    IN idIdi INT
+)
+BEGIN
+	INSERT INTO PRODUCTO (DESCRIPCION, STOCK_MINIMO, STOCK_MAXIMO,
+    ID_PROVEEDOR, PRECIO, PRODUCTO_ESTUDIANTIL, CANTIDAD_PAGINAS, ID_AUTOR, ID_IDIOMA  BORRADO)
+    VALUES (descrip, stMinimo, stMaximo, idProv, precioProd, prodEstudiantil, cantPag, idAut, idIdi false);
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE SpActualizarLibro (
+    IN descrip varchar(100), 
+    IN stMinimo INT, 
+    IN stMaximo INT,
+    IN idProv INT,
+    IN precioProd FLOAT, 
+    IN prodEstudiantil BOOLEAN,
+    IN cantPag INT, 
+    IN idAut INT, 
+    IN idIdi INT,
+    IN idLib INT
+)
+BEGIN
+	UPDATE PRODUCTO
+    SET DESCRIPCION = descrip,
+    STOCK_MINIMO = stMinimo,
+    STOCK_MAXIMO = stMaximo,
+    ID_PROVEEDOR = idProv,
+    PRECIO = precioProd,
+    PRODUCTO_ESTUDIANTIL = prodEstudiantil,
+    CANTIDAD_PAGINAS = cantPag,
+    ID_AUTOR = idAut,
+    ID_IDIOMA = idIdi
+    WHERE ID = idLib;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE SpBuscarLibroIdioma(IN idIdi INT)
+BEGIN
+    SELECT * FROM PRODUCTO
+    WHERE ID_IDIOMA = idIdi;
+END
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE SpBuscarLibroAutor(IN idAut INT)
+BEGIN
+    SELECT * FROM PRODUCTO
+    WHERE ID_AUTOR = idAut;
+END
+DELIMITER ;
