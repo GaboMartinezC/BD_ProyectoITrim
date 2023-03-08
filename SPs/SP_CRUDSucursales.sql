@@ -1,0 +1,41 @@
+DELIMITER //
+CREATE PROCEDURE SpIngresarSucursal(IN ubic varchar (100), IN telef varchar(150))
+BEGIN
+    INSERT INTO SUCURSAL(UBICACION, NUMERO_TELEFONICO, BORRADO)
+    VALUES (ubic,telef,false);
+END
+DELIMITER ;
+
+DELIMITER // 
+CREATE PROCEDURE SpActualizarSucursal(IN ubic varchar (100), IN telef varchar(150), IN idSuc INT)
+BEGIN
+    UPDATE SUCURSAL
+    SET UBICACION = ubic,
+    NUMERO_TELEFONICO = telef
+    WHERE ID = idSuc;
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE SpBuscarTodoSucursal()
+    SELECT * FROM SUCURSAL;
+BEGIN
+END //
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE SpBuscarSucursal(IN ubic varchar (100))
+BEGIN
+    SELECT * FROM SUCURSAL
+    WHERE UBICACION = ubic;
+END;
+DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE SpBorrarSucursal(IN idSuc INT)
+BEGIN
+    UPDATE SUCURSAL
+    SET BORRADO = true
+    WHERE ID = idSuc;
+END
+DELIMITER ;

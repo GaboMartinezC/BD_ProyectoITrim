@@ -1,4 +1,4 @@
-/*
+/* REALIZAR CORRECIONES URGENTES, SELECTS SIN BORRADO
     Sp's para productos, no involucra libros, por lo que los 
     prrocedimientos que se expresan a continuación NO deben ser consumidos
     en los metodos de la sub clase Libro, si no, en la super clase producto
@@ -126,8 +126,8 @@ CREATE PROCEDURE SpIngresarLibro (
 )
 BEGIN
 	INSERT INTO PRODUCTO (DESCRIPCION, STOCK_MINIMO, STOCK_MAXIMO,
-    ID_PROVEEDOR, PRECIO, PRODUCTO_ESTUDIANTIL, CANTIDAD_PAGINAS, ID_AUTOR, ID_IDIOMA  BORRADO)
-    VALUES (descrip, stMinimo, stMaximo, idProv, precioProd, prodEstudiantil, cantPag, idAut, idIdi false);
+    ID_PROVEEDOR, PRECIO, PRODUCTO_ESTUDIANTIL, CANTIDAD_PAGINAS, ID_AUTOR, ID_IDIOMA,  BORRADO)
+    VALUES (descrip, stMinimo, stMaximo, idProv, precioProd, prodEstudiantil, cantPag, idAut, idIdi, false);
 END //
 DELIMITER ;
 
@@ -164,7 +164,7 @@ CREATE PROCEDURE SpBuscarLibroIdioma(IN idIdi INT)
 BEGIN
     SELECT * FROM PRODUCTO
     WHERE ID_IDIOMA = idIdi;
-END
+END //
 DELIMITER ;
 
 DELIMITER //
@@ -172,5 +172,5 @@ CREATE PROCEDURE SpBuscarLibroAutor(IN idAut INT)
 BEGIN
     SELECT * FROM PRODUCTO
     WHERE ID_AUTOR = idAut;
-END
+END //
 DELIMITER ;
