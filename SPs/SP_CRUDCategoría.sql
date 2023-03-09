@@ -18,14 +18,16 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE SpBusquedaTodoCategoria()
 BEGIN
-	SELECT * FROM CATEGORIA;
+	SELECT * FROM CATEGORIA
+	WHERE BORRADO = false;
 END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBusquedaCategoriaDescripcion (IN descripcion varchar(200))
+CREATE PROCEDURE SpBusquedaCategoriaDescripcion (IN descrip varchar(200))
 BEGIN
-	SELECT * FROM CATEGORIA WHERE DESCRIPCION = descripcion;
+	SELECT * FROM CATEGORIA
+	WHERE DESCRIPCION = descrip AND BORRADO = false;
 END //
 DELIMITER ;
 

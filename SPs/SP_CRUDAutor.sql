@@ -18,7 +18,8 @@ DELIMITER ;
 DELIMITER //
 CREATE PROCEDURE SpBusquedaTodoAutor()
 BEGIN
-	SELECT * FROM AUTOR;
+	SELECT * FROM AUTOR 
+    WHERE BORRADO = false;
 END //
 DELIMITER ;
 
@@ -26,7 +27,7 @@ DELIMITER //
 CREATE PROCEDURE SpBusquedaNombreAutor(IN nom varchar (100))
 BEGIN
 	SELECT * FROM AUTOR
-    WHERE NOMBRE = nom;
+    WHERE NOMBRE = nom AND BORRADO = false;
 END //
 DELIMITER ;
 
@@ -34,7 +35,7 @@ DELIMITER //
 CREATE PROCEDURE SpBusquedaApellidosAutor(IN ap varchar (100))
 BEGIN 
     SELECT * FROM AUTOR 
-    WHERE APELLIDOS = ap;
+    WHERE APELLIDOS = ap AND BORRADO = false;
 END //
 DELIMITER ;
 
