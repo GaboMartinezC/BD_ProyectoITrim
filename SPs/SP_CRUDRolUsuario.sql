@@ -16,10 +16,10 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBuscarRolUsuario(IN descrip varchar(100))
+CREATE PROCEDURE SpBuscarRolUsuario(IN idRol INT)
 BEGIN
 	SELECT * FROM ROL_USUARIO
-    WHERE DESCRIPCION = descrip AND BORRADO = false;
+    WHERE ID = idRol AND BORRADO = false;
 END //
 DELIMITER ;
 

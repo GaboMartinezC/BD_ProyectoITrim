@@ -24,10 +24,10 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBusquedaCategoriaDescripcion (IN descrip varchar(200))
+CREATE PROCEDURE SpBusquedaCategoriaDescripcion (IN idCat INT)
 BEGIN
 	SELECT * FROM CATEGORIA
-	WHERE DESCRIPCION = descrip AND BORRADO = false;
+	WHERE ID = idCat AND BORRADO = false;
 END //
 DELIMITER ;
 

@@ -36,10 +36,10 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBuscarProveedor(IN descr varchar(30))
+CREATE PROCEDURE SpBuscarProveedor(IN idProv INT)
 BEGIN
 	SELECT * FROM PROVEEDOR
-    WHERE DESCRIPCION = descr AND BORRADO = false;
+    WHERE DESCRIPCION = idProv AND BORRADO = false;
 END //
 DELIMITER ;
 
@@ -47,4 +47,4 @@ CALL SpIngresarProveedor("MAPED", false, "infomaped@maped.com", "8822 1215");
 CALL SpActualizarProveedor("SUMA",false, "infosuma@suma.com","6553 9087",2);
 CALL SpBorrarProveedor(3);
 CALL SpBuscarTodoProveedor();
-CALL SpBuscarProveedor("MAPED");
+CALL SpBuscarProveedor(1);

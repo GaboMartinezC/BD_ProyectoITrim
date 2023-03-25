@@ -1,7 +1,7 @@
-/* REALIZAR CORRECIONES URGENTES, SELECTS SIN BORRADO
+/*
     Sp's para productos, no involucra libros, por lo que los 
     prrocedimientos que se expresan a continuación NO deben ser consumidos
-    en los metodos de la sub clase Libro, si no, en la super clase producto
+    en los metodos de la sub clase Libro, si no, en la super clase Producto
 */
 DELIMITER //
 CREATE PROCEDURE SpIngresarProducto (
@@ -57,11 +57,11 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBuscarProducto(IN descrip VARCHAR (100))
+CREATE PROCEDURE SpBuscarProducto(IN idProd INT)
 BEGIN
     SELECT  P.ID, P.DESCRIPCION, P.STOCK_MINIMO, P.STOCK_MAXIMO, P.ID_PROVEEDOR,
     P.PRECIO, P.PRODUCTO_ESTUDIANTIL, P.BORRADO FROM PRODUCTO AS P
-    WHERE CANTIDAD_PAGINAS = 0 AND DESCRIPCION = descrip AND BORRADO = false;
+    WHERE CANTIDAD_PAGINAS = 0 AND ID = idProd AND BORRADO = false;
 END //
 DELIMITER ;
 
@@ -79,10 +79,10 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBuscarProductoGeneral(IN descrip VARCHAR (100))
+CREATE PROCEDURE SpBuscarProductoGeneral(IN idProd INT)
 BEGIN
     SELECT * FROM PRODUCTO
-    WHERE DESCRIPCION = descrip AND BORRADO = false;
+    WHERE ID = idProd AND BORRADO = false;
 END //
 DELIMITER ;
 

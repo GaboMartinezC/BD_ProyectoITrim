@@ -16,10 +16,10 @@ END //
 DELIMITER ;
 
 DELIMITER //
-CREATE PROCEDURE SpBuscarIdioma(IN descrip varchar(100))
+CREATE PROCEDURE SpBuscarIdioma(IN idIdi INT)
 BEGIN
 	SELECT * FROM IDIOMA
-    WHERE DESCRIPCION = descrip AND BORRADO = false;
+    WHERE ID = idIdi AND BORRADO = false;
 END //
 DELIMITER ;
 
