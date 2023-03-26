@@ -38,5 +38,8 @@ BEGIN
     UPDATE SUCURSALES
     SET BORRADO = true
     WHERE ID = idSuc;
+    UPDATE BODEGA 
+    SET BORRADO = true
+    WHERE ID_SUCURSAL = idSuc;
 END //
 DELIMITER ;
