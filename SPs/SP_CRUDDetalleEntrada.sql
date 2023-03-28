@@ -5,7 +5,7 @@ BEGIN
     VALUES (idEnt, idProd, cant, false);
 END //
 DELIMITER ;
-
+/*Hola Lunita*/
 DELIMITER //
 CREATE PROCEDURE SpActualizarDetalle(IN idEnt INT, IN idProd INT, IN cant INT)
 BEGIN
