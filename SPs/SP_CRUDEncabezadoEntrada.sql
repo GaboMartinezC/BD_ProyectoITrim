@@ -23,6 +23,6 @@ BEGIN
     WHERE ID = idEncabezado;
     UPDATE DETALLE_ENTRADA
     SET BORRADO = true
-    where ID_ENTRADA = idEncabezado;
+    WHERE ID_ENTRADA = idEncabezado;
 END //
 DELIMITER ;
